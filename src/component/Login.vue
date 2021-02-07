@@ -3,7 +3,7 @@
     <div class="login_box">
       <!-- 头像区域 -->
       <div class="avatar_box">
-        <img src="./assets/logo.png" alt="logo" />
+        <img src="../assets/logo.png" alt="logo" />
       </div>
       <!-- 登录表单区域 -->
       <el-form
@@ -29,7 +29,9 @@
         </el-form-item>
         <!-- 按钮区域 -->
         <el-form-item class="btns">
-          <el-button :plain=true type="primary" @click="submitForm">登录</el-button>
+          <el-button :plain="true" type="primary" @click="submitForm"
+            >登录</el-button
+          >
           <el-button @click="resetLoginForm">重置</el-button>
         </el-form-item>
       </el-form>
