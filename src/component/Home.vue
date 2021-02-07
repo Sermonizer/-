@@ -3,7 +3,7 @@
     <!-- 头部区域 -->
     <el-header>
       <div>
-        <img src="../assets/jd.jpg" alt="系统图标">
+        <img src="../assets/jd.jpg" alt="系统图标" />
         <span>后台管理系统</span>
       </div>
       <el-button type="info" @click="logout">登出</el-button>
@@ -11,7 +11,29 @@
     <!-- 主体区域 -->
     <el-container>
       <!-- 侧边栏区域 -->
-      <el-aside width="200px">Aside</el-aside>
+      <el-aside width="200px">
+        <el-menu background-color="#333744" text-color="#fff">
+          <!-- 一级菜单 -->
+          <el-submenu index="1">
+            <!-- 模板区域 -->
+            <template slot="title">
+              <!-- 图标 -->
+              <i class="el-icon-location"></i>
+              <!-- 文本 -->
+              <span>导航一</span>
+            </template>
+            <!-- 二级菜单 -->
+            <el-menu-item-group>
+              <el-menu-item index="1-1">选项1</el-menu-item>
+              <el-menu-item index="1-2">选项2</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
+          <el-menu-item index="2">
+            <i class="el-icon-menu"></i>
+            <span slot="title">导航二</span>
+          </el-menu-item>
+        </el-menu>
+      </el-aside>
       <!-- 右侧内容区域 -->
       <el-main>Main</el-main>
     </el-container>
@@ -65,6 +87,6 @@ export default {
 }
 
 .el-main {
-  background-color: #EAEDF1;
+  background-color: #eaedf1;
 }
 </style>
