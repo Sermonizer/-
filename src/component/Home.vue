@@ -14,24 +14,17 @@
       <el-aside width="200px">
         <el-menu background-color="#333744" text-color="#fff">
           <!-- 一级菜单 -->
-          <el-submenu index="1">
+          <el-submenu :index="item.id" v-for="item in menuList" :key="item.id">
             <!-- 模板区域 -->
             <template slot="title">
               <!-- 图标 -->
               <i class="el-icon-location"></i>
-              <!-- 文本 -->
-              <span>导航一</span>
+              <!-- 动态绑定文本 -->
+              <span>{{item.authName}}</span>
             </template>
             <!-- 二级菜单 -->
-            <el-menu-item-group>
-              <el-menu-item index="1-1">选项1</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
-            </el-menu-item-group>
+            <el-menu-item index="1-1">选项1</el-menu-item>
           </el-submenu>
-          <el-menu-item index="2">
-            <i class="el-icon-menu"></i>
-            <span slot="title">导航二</span>
-          </el-menu-item>
         </el-menu>
       </el-aside>
       <!-- 右侧内容区域 -->
@@ -43,12 +36,30 @@
 <script>
 export default {
   name: 'Home',
+  // created钩子创建一个实例之后会被运行的代码
+  data() {
+    return {
+      // 左侧菜单栏数据
+      menuList: []
+    }
+  },
+  created() {
+    // 获取所有的菜单数据
+    this.getAsideMenuList()
+  },
   methods: {
     logout() {
       // 清空token
       window.sessionStorage.clear()
       // 重定向到登录页
       this.$router.push('./login')
+    },
+    async getAsideMenuList() {
+      // data解构赋值
+      const { data: res } = await this.$http.get('menus')
+      if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
+      this.menuList = res.data
+      console.log(res)
     }
   }
 }
