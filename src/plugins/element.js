@@ -13,7 +13,12 @@ import {
   Menu,
   MenuItem,
   MenuItemGroup,
-  Submenu
+  Submenu,
+  Breadcrumb,
+  BreadcrumbItem,
+  Row,
+  Col,
+  Card
 } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -31,3 +36,8 @@ Vue.use(Menu)
 Vue.use(MenuItem)
 Vue.use(MenuItemGroup)
 Vue.use(Submenu)
+Vue.use(Breadcrumb)
+Vue.use(BreadcrumbItem)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Card)

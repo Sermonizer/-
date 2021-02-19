@@ -71,7 +71,7 @@ export default {
       },
       // 保存折叠状态的对象
       isCollapse: false,
-      // 当前高亮激活的路径
+      // 保存当前激活路径的对象
       activePath: ''
     }
   },
@@ -79,8 +79,8 @@ export default {
   created() {
     // 获取所有的菜单数据
     this.getAsideMenuList()
-    // 从sessionStorage里读取当前激活的链接
-    this.activePath = window.sessionStorage.getItem('subItemPath')
+    // 读取当前激活的路由并高亮
+    this.activePath = this.handleActive('')
   },
   methods: {
     logout() {
@@ -99,10 +99,10 @@ export default {
     toggleCollapse() {
       this.isCollapse = !this.isCollapse
     },
-    // 保存链接的激活状态
-    handleActive(subItemPath) {
-      window.sessionStorage.setItem('subItemPath', subItemPath)
-      this.activePath = subItemPath
+    // 使当前激活的链接高亮
+    handleActive(path) {
+      this.activePath = path
+      return this.$route.path
     }
   }
 }
