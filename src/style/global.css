@@ -5,6 +5,10 @@ html,body,#app {
   margin: 0;
 }
 
+.el-table {
+  margin-top: 20px;
+}
+
 .el-breadcrumb {
   margin-bottom: 15px;
 }
